@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "And Black";
+  src: url("myfont-webfont.eot?#iefix") format('embedded-opentype'),
+       url("fonts/and_black.woff") format('woff'),
+       url("fonts/and_black.ttf") format('truetype');
+}
+
+body {
+  margin: 0;
+}
+
+/* Disable ugly boxes around images in IE10 */
+a img{
+  border: 0px;
+}
+
+::-moz-selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+::selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+.section--center {
+  max-width: 860px;
+}
+
+.grid--center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.coffee-search-box .mdl-textfield__input {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.coffee-header .mdl-menu__container {
+  z-index: 50;
+  margin: 0 !important;
+}
+
+
+.mdl-textfield--expandable {
+  width: auto;
+}
+
+.coffee-fab {
+  position: absolute;
+  right: 20%;
+  bottom: -26px;
+  z-index: 3;
+  background: #64ffda !important;
+  color: black !important;
+}
+
+.coffee-mobile-title {
+  display: none !important;
+}
+
+
+.coffee-logo-image {
+  height: 28px;
+  width: 140px;
+}
+
+
+.coffee-header {
+  overflow: visible;
+  background-color: white;
+}
+
+  .coffee-header .material-icons {
+    color: #767777 !important;
+  }
+
+  .coffee-header .mdl-layout__drawer-button {
+    background: transparent;
+    color: #767777;
+  }
+
+  .coffee-header .mdl-navigation__link {
+    color: #757575;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .coffee-navigation-container {
+    /* Simple hack to make the overflow happen to the left instead... */
+    direction: rtl;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .coffee-navigation {
+    /* ... and now make sure the content is actually LTR */
+    direction: ltr;
+    justify-content: flex-end;
+    width: 800px;
+  }
+
+  .coffee-navigation .mdl-navigation__link {
+    display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+  }
+
+    .coffee-navigation .mdl-navigation__link:hover {
+      border-bottom: 4px solid #8bc34a;
+    }
+
+.coffee-drawer {
+  border-right: none;
+}
+
+  .coffee-drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+  }
+
+  .coffee-drawer .mdl-navigation__link.mdl-navigation__link {
+    font-size: 14px;
+    color: #757575;
+  }
+
+  .coffee-drawer span.mdl-navigation__link.mdl-navigation__link {
+    color: #8bc34a;
+  }
+
+  .coffee-drawer .mdl-layout-title {
+    position: relative;
+    background: #6ab344;
+    height: 160px;
+  }
+
+    .coffee-drawer .coffee-logo-image {
+      position: absolute;
+      bottom: 16px;
+    }
+
+.coffee-font {
+  font-family: 'And Black', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  color: #2D2B2B;
+  font-weight: 300;
+}
+
+.coffee-slogan {
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+.coffee-sub-slogan {
+  font-size: 21px;
+  padding-top: 24px;
+}
+
+.coffee-link {
+  text-decoration: none;
+  color: #8bc34a !important;
+}
+
+  .coffee-link:hover {
+    color: #7cb342 !important;
+  }
+
+  .coffee-link .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+.coffee-alt-link {
+  text-decoration: none;
+  color: #64ffda !important;
+  font-size: 16px;
+}
+
+  .coffee-alt-link:hover {
+    color: #00bfa5 !important;
+  }
+
+  .coffee-alt-link .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+.coffee-customized-section {
+  background-color: #F3F3F3;
+  text-align: center;
+}
+
+.coffee-customized-section-text {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 16px 0 16px;
+}
+
+  .coffee-customized-section-text p {
+    padding-top: 16px;
+  }
+
+.coffee-footer {
+  background-color: #fafafa;
+  position: relative;
+}
+
+  .coffee-footer a:hover {
+    color: #8bc34a;
+  }
+
+  .coffee-footer .mdl-mega-footer--top-section::after {
+    border-bottom: none;
+  }
+
+  .coffee-footer .mdl-mega-footer--middle-section::after {
+    border-bottom: none;
+  }
+
+  .coffee-footer .mdl-mega-footer--bottom-section {
+    position: relative;
+  }
+
+  .coffee-footer .mdl-mega-footer--bottom-section a {
+    margin-right: 2em;
+  }
+
+  .coffee-footer .mdl-mega-footer--right-section a .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+
+.coffee-link-menu:hover {
+  cursor: pointer;
+}
+
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+  .coffee-navigation-container {
+    display: none;
+  }
+
+  .coffee-title {
+    display: none !important;
+  }
+
+  .coffee-mobile-title {
+    display: block !important;
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 12px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .coffee-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+
+  .coffee-sub-slogan {
+    font-size: 16px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
+
+  .coffee-fab {
+    display: none;
+  }
+
+  .coffee-wear-band-text {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .coffee-footer .mdl-mega-footer--bottom-section {
+    display: none;
+  }
+}

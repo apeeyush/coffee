@@ -1,5 +1,127 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+
+    .coffee-header.mdl-layout__header.mdl-layout__header--waterfall
+      .mdl-layout__header-row
+        span.coffee-title.mdl-layout-title
+          img.coffee-logo-image(src='images/coffee-logo.png')
+
+        // Add spacer, to align navigation to the right in desktop
+        .coffee-header-spacer.mdl-layout-spacer
+
+        // Navigation
+        .coffee-navigation-container
+          nav.coffee-navigation.mdl-navigation
+            a.mdl-navigation__link.mdl-typography--text-uppercase(href='/') Home
+            a.mdl-navigation__link.mdl-typography--text-uppercase(href='/about') About
+            a.mdl-navigation__link.mdl-typography--text-uppercase(href='/contact') Contact
+
+        span.coffee-mobile-title.mdl-layout-title
+          img.coffee-logo-image(src='images/coffee-logo.png')
+
+    .coffee-drawer.mdl-layout__drawer
+        span.mdl-layout-title
+          img.coffee-logo-image(src='images/coffee-logo-white.png')
+        nav.mdl-navigation
+          a.mdl-navigation__link(href='/') Home
+          a.mdl-navigation__link(href='/about') About
+          a.mdl-navigation__link(href='/contact') Contact
+
+    .coffee-content.mdl-layout__content
+      a(name='top')
+      .coffee-customized-section
+        .coffee-customized-section-text
+          .coffee-font.coffee-slogan COmplete your Favourite FEEd
+          p.mdl-typography--font-light
+            | This project aims to help you complete your favourite feed. Be it 
+            a(href='http://www.paulgraham.com/articles.html') Paul Graham's essays
+            |  or 
+            a(href='http://highscalability.com/all-time-favorites/') High Scalability all time favorites
+            | .
+            br
+            | You can set it up to receive old content from RSS/Atom feed after fixed intervals. This way, you won't feel overwhelmed and the feed will eventually complete.
+            br
+            | Just fill the form below and you will receive a mail on the selected days. I hate spam as much as you do (probably more) and will not share your email id with anyone. It will only be used to send the feed updates. Moreover, you can unsubsribe anytime using the link present in mails.
+            br
+            | Happy Reading :)
+            br
+            br
+
+      .mdl-grid.mdl-grid--no-spacing.section--center
+        .mdl-card.mdl-cell.mdl-cell--12-col-desktop.mdl-cell--9-col-tablet.mdl-cell--4-col-phone.mdl-shadow--2dp
+          form(name="add-feed", method="post")
+            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
+                input(type="email", name="email", id="email", class="mdl-textfield__input")
+                label(for="email", class="mdl-textfield__label") Email
+            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
+                input(type="text", name="feed", id="feed", class="mdl-textfield__input")
+                label(for="feed", class="mdl-textfield__label") Feed
+            .mdl-grid.mdl-grid--no-spacing.section--center
+              .mdl-card.grid--center
+                label(for="monday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="monday" name="monday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Monday
+                label(for="tuesday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="tuesday" for="tuesday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Tuesday
+                label(for="wednesday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="wednesday" name="wednesday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Wednesday
+                label(for="thursday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="thursday" name="thursday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Thursday
+                label(for="friday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="friday" name="friday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Friday
+                label(for="saturday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="saturday" name="saturday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Saturday
+                label(for="sunday" class="mdl-checkbox mdl-js-checkbox")
+                  input(type="checkbox" id="sunday" name="sunday" class="mdl-checkbox__input")
+                  span(class="mdl-checkbox__label") Sunday
+            div(style="text-align:center;")
+                button(type="submit", value="add", class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Submit
+          br
+
+      br
+
+      .mdl-grid.mdl-grid--no-spacing.section--center
+        .mdl-card.mdl-cell.mdl-cell--12-col-desktop.mdl-cell--9-col-tablet.mdl-cell--4-col-phone.mdl-shadow--2dp
+          .coffee-customized-section-text
+            .coffee-font.coffee-slogan Example Feeds
+          br
+          table.mdl-data-table.mdl-js-data-table.grid--center
+            thead
+              tr
+                th.mdl-data-table__cell--non-numeric Description
+                th.mdl-data-table__cell--non-numeric XML
+            tbody
+              tr
+                td.mdl-data-table__cell--non-numeric Paul Graham's Essays
+                td.mdl-data-table__cell--non-numeric
+                  a(href='http://www.aaronsw.com/2002/feeds/pgessays.rss') Link
+              tr
+                td.mdl-data-table__cell--non-numeric High Scalability all time favourites
+                td.mdl-data-table__cell--non-numeric
+                  a(href='') Link
+              tr
+                td.mdl-data-table__cell--non-numeric Topcoder Algorithm's tutorial
+                td.mdl-data-table__cell--non-numeric
+                  a(href='') Link
+          br
+
+      footer.coffee-footer.mdl-mega-footer
+        .mdl-mega-footer--top-section
+          .mdl-mega-footer--left-section
+            button.mdl-mega-footer--social-btn
+            button.mdl-mega-footer--social-btn
+            button.mdl-mega-footer--social-btn
+          .mdl-mega-footer--right-section
+            a.mdl-typography--font-light(href='#top')
+              | Back to Top
+              i.material-icons expand_less
+        .mdl-mega-footer--bottom-section
+          a.coffee-link.mdl-typography--font-light(href='') Blog
+  script(src='javascripts/material.min.js')
