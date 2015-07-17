@@ -31,8 +31,8 @@ block content
 
     .coffee-content.mdl-layout__content
       a(name='top')
-      .coffee-customized-section
-        .coffee-customized-section-text
+      .coffee-about-section
+        .coffee-about-section-text
           .coffee-font.coffee-slogan COmplete your Favourite FEEd
           p.mdl-typography--font-light
             | This project aims to help you complete your favourite feed. Be it 
@@ -43,16 +43,27 @@ block content
             br
             | You can set it up to receive old content from the feed after fixed intervals and it's only a matter of months to finish up the feed you always wanted to read.
             br
-            | Happy Reading :)
+            h5 Code
+            | The source code for this project can be found 
+            a(href='https://github.com/apeeyush/coffee') here
+            | .
+            br
+            h5 Attribution
+            | The project is powered by 
+            a(href='https://nodejs.org/') Node.js
+            | . For design, it uses 
+            a(href='http://www.getmdl.io/') Material Design Lite
+            | .
             br
             br
 
       footer.coffee-footer.mdl-mega-footer
-        .mdl-mega-footer--top-section
-          .mdl-mega-footer--left-section
-            button.mdl-mega-footer--social-btn
-            button.mdl-mega-footer--social-btn
-            button.mdl-mega-footer--social-btn
-        .mdl-mega-footer--bottom-section
-          a.coffee-link.mdl-typography--font-light(href='') Blog
+      //-   .mdl-mega-footer--top-section
+      //-     .mdl-mega-footer--left-section
+      //-       button.mdl-mega-footer--social-btn
+      //-       button.mdl-mega-footer--social-btn
+      //-       button.mdl-mega-footer--social-btn
+      //-   .mdl-mega-footer--bottom-section
+      //-     a.coffee-link.mdl-typography--font-light(href='/about') About
+      //-     a.coffee-link.mdl-typography--font-light(href='/contact') Contact
   script(src='javascripts/material.min.js')
