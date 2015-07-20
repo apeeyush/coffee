@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   console.log(req.body);
 
-  // Grab data from http request
+  // Grab data from http request and create a record in database
   var data = {email: req.body.email, feed: req.body.feed};
   data['uni_id'] = Math.random().toString(36).substr(2, 12);
   var day_list = [0,0,0,0,0,0,0];
@@ -43,8 +43,6 @@ router.post('/', function(req, res, next) {
     else if (key == 'saturday')
       day_list[6] = 1;
   }
-
-  // Get a Postgres client from the connection pool and create a database entry
   pg.connect(connectionString, function(err, client, done) {
     if (err) {
       return console.error('error fetching client from pool', err);
@@ -57,9 +55,8 @@ router.post('/', function(req, res, next) {
     from: 'Peeyush Agarwal <coffeefeeder@gmail.com>',
     to: data.email,
     subject: 'Feed Subscription Confirmation',
-    text: 'Hi,\n\nPlease click on the following link to confirm your subscription to the feed.\n'+'localhost:3000/verify/'+data.uni_id
+    text: 'Hi,\n\nPlease click on the following link to confirm your subscription to the feed.\n'+req.headers.host+'/verify/'+data.uni_id+'\n\nHappy Reading :)'
   };
-  // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){
     if(error){
         console.log(error);
@@ -68,6 +65,7 @@ router.post('/', function(req, res, next) {
     }
   });
 
+  // Show homepage
   res.render('index', { title: 'COmplete your Favourite FEEd' });
 });
 
@@ -108,9 +106,9 @@ router.get('/unsubscribe/:uni_id', function(req, res, next) {
           client.query('UPDATE coffee SET unsubscribe=TRUE WHERE uni_id = $1',[uni_id], function(err, result) {
             if (err){ return console.error('error updating unsubscribe column!', err);}
           });
-          res.render('verify', { title: 'Verify', message: 'You have been unsubscribed successfully!' });
+          res.render('unsubscribe', { title: 'Unsubscribe', message: 'You have been unsubscribed successfully!' });
         }else{
-          res.render('verify', { title: 'Verify', message: 'Invalid Request!' });
+          res.render('unsubscribe', { title: 'Unsubscribe', message: 'Invalid Request!' });
         }
       });
   });

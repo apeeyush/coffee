@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+
+    .coffee-header.mdl-layout__header.mdl-layout__header--waterfall
+      .mdl-layout__header-row
+        span.coffee-title.mdl-layout-title
+          img.coffee-logo-image(src='/images/coffee-logo.png')
+
+        // Add spacer, to align navigation to the right in desktop
+        .coffee-header-spacer.mdl-layout-spacer
+
+        // Navigation
+        .coffee-navigation-container
+          nav.coffee-navigation.mdl-navigation
+            a.mdl-navigation__link.mdl-typography--text-uppercase(href='/') Home
+            a.mdl-navigation__link.mdl-typography--text-uppercase(href='/about') About
+            a.mdl-navigation__link.mdl-typography--text-uppercase(href='/contact') Contact
+
+        span.coffee-mobile-title.mdl-layout-title
+          img.coffee-logo-image(src='/images/coffee-logo.png')
+
+    .coffee-drawer.mdl-layout__drawer
+        span.mdl-layout-title
+          img.coffee-logo-image(src='/images/coffee-logo-white.png')
+        nav.mdl-navigation
+          a.mdl-navigation__link(href='/') Home
+          a.mdl-navigation__link(href='/about') About
+          a.mdl-navigation__link(href='/contact') Contact
+
+    .coffee-content.mdl-layout__content
+      a(name='top')
+      .coffee-about-section
+        .coffee-about-section-text
+          .coffee-font.coffee-slogan COmplete your Favourite FEEd
+          p.mdl-typography--font-light= message
+            br
+            br
+
+      footer.coffee-footer.mdl-mega-footer
+      //-   .mdl-mega-footer--top-section
+      //-     .mdl-mega-footer--left-section
+      //-       button.mdl-mega-footer--social-btn
+      //-       button.mdl-mega-footer--social-btn
+      //-       button.mdl-mega-footer--social-btn
+      //-   .mdl-mega-footer--bottom-section
+      //-     a.coffee-link.mdl-typography--font-light(href='/about') About
+      //-     a.coffee-link.mdl-typography--font-light(href='/contact') Contact
+  script(src='/javascripts/material.min.js')
