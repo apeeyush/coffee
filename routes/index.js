@@ -2,6 +2,17 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://peeyush:password@localhost:5432/coffee';
+var nodemailer = require('nodemailer');
+
+// Set up mailer to send mails
+var transporter = nodemailer.createTransport({
+    service: 'xx',
+    auth: {
+        user: 'xxx@xx.xx',
+        pass: 'xxxxxxxxx'
+    }
+});
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,22 +43,77 @@ router.post('/', function(req, res, next) {
     else if (key == 'saturday')
       day_list[6] = 1;
   }
-  console.log(day_list);
-  // Get a Postgres client from the connection pool
+
+  // Get a Postgres client from the connection pool and create a database entry
   pg.connect(connectionString, function(err, client, done) {
     if (err) {
       return console.error('error fetching client from pool', err);
     }
     client.query("INSERT INTO coffee(email, feed, uni_id, sunday, monday, tuesday, wednesday, thursday, friday, saturday) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)", [data.email, data.feed, data.uni_id, day_list[0], day_list[1], day_list[2], day_list[3], day_list[4], day_list[5], day_list[6]]);
-  // client.query('SELECT $1::int AS number', ['1'], function(err, result) {
-  //   done();
-  //   if (err) {
-  //     return console.error('error running query', err);
-  //   }
-  //   console.log(result.rows[0].number);
-  // });
   });
+
+  // Send verification mail
+  var mailOptions = {
+    from: 'Peeyush Agarwal <coffeefeeder@gmail.com>',
+    to: data.email,
+    subject: 'Feed Subscription Confirmation',
+    text: 'Hi,\n\nPlease click on the following link to confirm your subscription to the feed.\n'+'localhost:3000/verify/'+data.uni_id
+  };
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('Message sent: ' + info.response);
+    }
+  });
+
   res.render('index', { title: 'COmplete your Favourite FEEd' });
+});
+
+/* GET verify page */
+router.get('/verify/:uni_id', function(req, res, next) {
+  uni_id = req.params['uni_id'];
+  pg.connect(connectionString, function(err, client, done) {
+    if (err) {
+      return console.error('error fetching client from pool', err);
+    }
+    client.query('SELECT * FROM coffee WHERE uni_id = $1',[uni_id], function(err, result) {
+        if (err){ return console.error('error querying the database', err);}
+        done();                       // return the client to the connection pool for other requests to reuse
+        if(result.rows.length > 0){
+          console.log(result.rows[0].verified)
+          client.query('UPDATE coffee SET verified=TRUE WHERE uni_id = $1',[uni_id], function(err, result) {
+            if (err){ return console.error('error updating verified column!', err);}
+          });
+          res.render('verify', { title: 'Verify', message: 'Verification Successful!' });
+        }else{
+          res.render('verify', { title: 'Verify', message: 'Invalid Request!' });
+        }
+      });
+  });
+});
+
+/* GET unsubscribe page */
+router.get('/unsubscribe/:uni_id', function(req, res, next) {
+  uni_id = req.params['uni_id'];
+  pg.connect(connectionString, function(err, client, done) {
+    if (err) {
+      return console.error('error fetching client from pool', err);
+    }
+    client.query('SELECT * FROM coffee WHERE uni_id = $1',[uni_id], function(err, result) {
+        if (err){ return console.error('error querying the database', err);}
+        done();                       // return the client to the connection pool for other requests to reuse
+        if(result.rows.length > 0){
+          client.query('UPDATE coffee SET unsubscribe=TRUE WHERE uni_id = $1',[uni_id], function(err, result) {
+            if (err){ return console.error('error updating unsubscribe column!', err);}
+          });
+          res.render('verify', { title: 'Verify', message: 'You have been unsubscribed successfully!' });
+        }else{
+          res.render('verify', { title: 'Verify', message: 'Invalid Request!' });
+        }
+      });
+  });
 });
 
 /* GET about page. */
