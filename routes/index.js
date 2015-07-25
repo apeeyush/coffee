@@ -68,8 +68,8 @@ router.post('/', function(req, res, next) {
     }
   });
 
-  // Show homepage
-  res.render('index', { title: 'COmplete your Favourite FEEd' });
+  // Show successful submission page
+  res.render('message', { title: 'Form submitted successfully', message: 'A confirmation mail has been sent to your mail id. Once you confirm your subscription, you will start recieving your feeds. Happy Reading :) ' });
 });
 
 /* GET verify page */
