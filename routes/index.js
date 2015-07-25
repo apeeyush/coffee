@@ -1,15 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://peeyush:password@localhost:5432/coffee';
 var nodemailer = require('nodemailer');
+var secrets = require('../config/secrets');
+
+var connectionString = secrets.db;
 
 // Set up mailer to send mails
 var transporter = nodemailer.createTransport({
-    service: 'xx',
+    service: secrets.transporter.service,
     auth: {
-        user: 'xxx@xx.xx',
-        pass: 'xxxxxxxxx'
+        user: secrets.transporter.auth.user,
+        pass: secrets.transporter.auth.pass
     }
 });
 

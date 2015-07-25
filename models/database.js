@@ -1,5 +1,7 @@
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://peeyush:password@localhost:5432/coffee';
+var secrets = require('../config/secrets');
+
+var connectionString = secrets.db;
 
 var client = new pg.Client(connectionString);
 client.connect();

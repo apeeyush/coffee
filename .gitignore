@@ -29,3 +29,5 @@ node_modules
 # Stuff directory contains stuff which is not required to be commited
 stuff
 
+# Ignore configs
+config/secrets.js
