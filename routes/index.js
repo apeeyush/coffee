@@ -26,6 +26,7 @@ router.post('/', function(req, res, next) {
   // Grab data from http request and create a record in database
   var data = {email: req.body.email, feed: req.body.feed};
   data['uni_id'] = Math.random().toString(36).substr(2, 12);
+  data['sent_count'] = 0
   var day_list = [0,0,0,0,0,0,0];
   for (var key in req.body){
     if (key == 'sunday')
