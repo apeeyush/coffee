@@ -58,6 +58,9 @@ block content
             div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
                 input(type="text", name="feed", id="feed", class="mdl-textfield__input")
                 label(for="feed", class="mdl-textfield__label") Feed
+            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
+                input(type="text", name="hour_of_day", id="hour_of_day", class="mdl-textfield__input", pattern="-?[0-9]*(\.[0-9]+)?", value=9)
+                label(for="hour_of_day", class="mdl-textfield__label") Hour of Day in GMT (0-23)
             .mdl-grid.mdl-grid--no-spacing.section--center
               .mdl-card.grid--center
                 label(for="monday" class="mdl-checkbox mdl-js-checkbox")

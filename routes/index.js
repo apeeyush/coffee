@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
   console.log(req.body);
 
   // Grab data from http request and create a record in database
-  var data = {email: req.body.email, feed: req.body.feed};
+  var data = {email: req.body.email, feed: req.body.feed, hour_of_day: req.body.hour_of_day};
   data['uni_id'] = Math.random().toString(36).substr(2, 12);
   data['sent_count'] = 0
   var day_list = [0,0,0,0,0,0,0];
@@ -48,7 +48,7 @@ router.post('/', function(req, res, next) {
     if (err) {
       return console.error('error fetching client from pool', err);
     }
-    client.query("INSERT INTO coffee(email, feed, uni_id, sunday, monday, tuesday, wednesday, thursday, friday, saturday) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)", [data.email, data.feed, data.uni_id, day_list[0], day_list[1], day_list[2], day_list[3], day_list[4], day_list[5], day_list[6]]);
+    client.query("INSERT INTO coffee(email, feed, uni_id, sunday, monday, tuesday, wednesday, thursday, friday, saturday, sent_count, hour_of_day) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", [data.email, data.feed, data.uni_id, day_list[0], day_list[1], day_list[2], day_list[3], day_list[4], day_list[5], day_list[6], data.sent_count, data.hour_of_day]);
   });
 
   // Send verification mail
