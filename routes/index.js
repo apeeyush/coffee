@@ -3,6 +3,8 @@ var router = express.Router();
 var pg = require('pg');
 var nodemailer = require('nodemailer');
 var secrets = require('../config/secrets');
+var EmailTemplate = require('email-templates').EmailTemplate;
+var path = require('path');
 
 var connectionString = secrets.db;
 
@@ -23,8 +25,6 @@ router.get('/', function(req, res, next) {
 
 /* POST home page */
 router.post('/', function(req, res, next) {
-  console.log(req.body);
-
   // Grab data from http request and create a record in database
   var data = {email: req.body.email, feed: req.body.feed, hour_of_day: req.body.hour_of_day};
   data['uni_id'] = Math.random().toString(36).substr(2, 12);
@@ -54,18 +54,22 @@ router.post('/', function(req, res, next) {
   });
 
   // Send verification mail
-  var mailOptions = {
-    from: 'Peeyush Agarwal <coffeefeeder@gmail.com>',
-    to: data.email,
-    subject: 'Feed Subscription Confirmation',
-    text: 'Hi,\n\nPlease click on the following link to confirm your subscription to the feed.\n'+req.headers.host+'/verify/'+data.uni_id+'\n\nHappy Reading :)'
-  };
-  transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        console.log(error);
-    }else{
-        console.log('Message sent: ' + info.response);
-    }
+  var templateDir = path.join(__dirname, '../templates', 'welcome-email')
+  var welcome_email = new EmailTemplate(templateDir)
+  var user = {confirmation_url:req.headers.host+'/verify/'+data.uni_id}
+  welcome_email.render(user, function (err, results) {
+    if (err) { return console.error(err)}
+    var mailOptions = {
+      from: 'Peeyush Agarwal <coffeefeeder@gmail.com>',
+      to: data.email,
+      subject: 'Feed Subscription Confirmation',
+      html : results.html,
+      text: results.text
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+      if(error) { console.log(error); }
+      else { console.log('Message sent: ' + info.response); }
+    });
   });
 
   // Show successful submission page
