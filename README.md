@@ -6,9 +6,17 @@ You can set it up to receive old content from the feed after fixed intervals and
 
 Happy Reading :)
 
+## Project Setup
+* The project uses `node` and `postgresql`. Make sure to install both of them.
+* Configure your config variables in `config/secrets.js` using `config/secrets.sample.js` as example.
+* Run `node models/database.js` to create database table.
+* Install packages using `npm install`.
+* Run the app using `npm start`.
+
 ## TODO
 * ~~Setup a basic working version~~
 * Improve email format
+* Add a `resubscribe` link since people may unsubscribe by mistake
 * Consider using alternative ORM (like `sequelize` or `node-orm2`) instead of `pg`
 * Show the top feeds on homepage
 
