@@ -70,7 +70,7 @@ var sendFeeds = function(rows){
         // Send feed mail
         var templateDir = path.join(__dirname, '../templates', 'feed-email');
         var feed_email = new EmailTemplate(templateDir);
-        console.log(feed);
+        // console.log(feed);
         var feed_details = {
           title: feed['title'],
           link:feed['link'],
@@ -79,7 +79,6 @@ var sendFeeds = function(rows){
           meta_description:feed['meta']['description'],
           unsubscribe_link:secrets.host+'/unsubscribe/'+row['uni_id']
         };
-        console.log(feed_details);
         feed_email.render(feed_details, function (err, results) {
           if (err) { return console.error(err)}
           var mailOptions = {
