@@ -37,13 +37,17 @@ block content
           p.mdl-typography--font-light
             | This project aims to help you complete your favourite feed. Be it 
             a(href='http://www.paulgraham.com/articles.html') Paul Graham's essays
-            |  or 
+            | , 
             a(href='http://highscalability.com/all-time-favorites/') High Scalability all time favorites
+            | , 
+            a(href='https://www.topcoder.com/community/data-science/data-science-tutorials/') Algorithm tutorials by topcoder
+            |  or 
+            a(href='http://www.nerdfitness.com/resources/') Nerd Fitness guides
             | .
             br
             | You can set it up to receive old content from RSS/Atom feed after fixed intervals. This way, you won't feel overwhelmed and the feed will eventually complete.
             br
-            | Just fill the form below and you will receive a mail on the selected days. I hate spam as much as you do (probably more) and will not share your email id with anyone. It will only be used to send the feed updates. Moreover, you can unsubsribe anytime using the link present in mails.
+            | Just fill the form below and you will receive a mail on the selected days at the chosen time. I hate spam as much as you do (probably more) and will not share your email id with anyone. It will only be used to send the feed updates. Moreover, you can unsubsribe anytime using the link present in mails.
             br
             | Happy Reading :)
             br
@@ -92,9 +96,13 @@ block content
 
       .mdl-grid.mdl-grid--no-spacing.section--center
         .mdl-card.mdl-cell.mdl-cell--12-col-desktop.mdl-cell--9-col-tablet.mdl-cell--4-col-phone.mdl-shadow--2dp
-          .coffee-customized-section-text
-            .coffee-font.coffee-slogan Example Feeds
-          br
+          .coffee-example-section
+            .coffee-example-section-text
+              .coffee-font.coffee-slogan Example Feeds
+              p.mdl-typography--font-light
+                | You can find a good collection of feeds 
+                a(href='https://github.com/apeeyush/loff') here
+                | .
           table.mdl-data-table.mdl-js-data-table.grid--center
             thead
               tr
@@ -108,11 +116,15 @@ block content
               tr
                 td.mdl-data-table__cell--non-numeric High Scalability all time favourites
                 td.mdl-data-table__cell--non-numeric
-                  a(href='') Link
+                  a(href='https://github.com/apeeyush/loff/raw/master/feeds/high_scalability_all_time_favorites.rss') Link
               tr
                 td.mdl-data-table__cell--non-numeric Topcoder Algorithm's tutorial
                 td.mdl-data-table__cell--non-numeric
-                  a(href='') Link
+                  a(href='https://github.com/apeeyush/loff/raw/master/feeds/algorithms_topcoder.rss') Link
+              tr
+                td.mdl-data-table__cell--non-numeric Machine Learning - sklearn
+                td.mdl-data-table__cell--non-numeric
+                  a(href='https://github.com/apeeyush/loff/raw/master/feeds/scikit_learn.rss') Link
           br
 
       footer.coffee-footer.mdl-mega-footer

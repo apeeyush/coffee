@@ -106,7 +106,7 @@ var sendFeeds = function(rows){
 };
 
 /* Start a cronjob that runs every hour */
-new CronJob('00 * * * * *', function() {
+new CronJob('00 00 * * * *', function() {
   var d = new Date();
   var hour_of_day = d.getUTCHours();       /* 0-23 */
   var day_of_week = d.getUTCDay();  /* Sunday=0, Monday=1, .. */

@@ -208,6 +208,21 @@ a img{
     padding-top: 16px;
   }
 
+.coffee-example-section {
+  text-align: center;
+}
+
+.coffee-example-section-text {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 16px 0 16px;
+}
+
+  .coffee-example-section-text p {
+    padding-top: 16px;
+  }
+
 .coffee-about-section {
   background-color: #F3F3F3;
 }
