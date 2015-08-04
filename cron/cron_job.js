@@ -82,7 +82,7 @@ var sendFeeds = function(rows){
         feed_email.render(feed_details, function (err, results) {
           if (err) { return console.error(err)}
           var mailOptions = {
-            from: 'Peeyush Agarwal <coffeefeeder@gmail.com>',
+            from: secrets.transporter.from,
             to: row['email'],
             subject: 'Your feed from '+ feed_details['meta_title'],
             html : results.html,

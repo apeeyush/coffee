@@ -60,7 +60,7 @@ router.post('/', function(req, res, next) {
   welcome_email.render(user, function (err, results) {
     if (err) { return console.error(err)}
     var mailOptions = {
-      from: 'Peeyush Agarwal <coffeefeeder@gmail.com>',
+      from: secrets.transporter.from,
       to: data.email,
       subject: 'Feed Subscription Confirmation',
       html : results.html,

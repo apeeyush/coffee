@@ -16,10 +16,11 @@ module.exports = {
   db: process.env.DATABASE_URL || 'postgres://peeyush:password@localhost:5432/coffee',
   host: host_url,
   transporter: {
-    service: 'xx',				// e.g. : Gmail
+    service: 'xx',				    // e.g. : 'Gmail'
     auth: {
-        user: 'xxx@xx.xx',		// e.g. : my_id@gmail.com
-        pass: 'xxxxxxx'			// e.g. : my_password
-    }
+        user: 'xxx@xx.xx',		// e.g. : 'my_id@gmail.com'
+        pass: 'xxxxxxx'			  // e.g. : 'my_password'
+    },
+    from: 'Name <email>'      // e.g. : 'Peeyush Agarwal <coffeefeeder@gmail.com>'
   }
 };
