@@ -17,7 +17,8 @@ Happy Reading :)
 * ~~Setup a basic working version~~
 * Improve email format
 * Add a `resubscribe` link since people may unsubscribe by mistake
-* Consider using alternative ORM (like `sequelize` or `node-orm2`) instead of `pg`
+* Consider using alternative ORM (like `sequelize` or `node-orm2`) instead of using `pg`
+* Add form data verification - Verify if feed and email are valid
 * Show the top feeds on homepage
 
 ## Contribution
