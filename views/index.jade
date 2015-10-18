@@ -47,24 +47,22 @@ block content
             br
             | You can set it up to receive old content from RSS/Atom feed after fixed intervals. This way, you won't feel overwhelmed and the feed will eventually complete.
             br
-            | Just fill the form below and you will receive a mail on the selected days at the chosen time. I hate spam as much as you do (probably more) and will not share your email id with anyone. It will only be used to send the feed updates. Moreover, you can unsubsribe anytime using the link present in mails.
-            br
             | Happy Reading :)
             br
             br
 
       .mdl-grid.mdl-grid--no-spacing.section--center
         .mdl-card.mdl-cell.mdl-cell--12-col-desktop.mdl-cell--9-col-tablet.mdl-cell--4-col-phone.mdl-shadow--2dp
+          h6.grid--center
+            | Just fill the form below and you will receive a mail on the selected days at the chosen time.
           form(name="add-feed", method="post")
             div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
                 input(type="email", name="email", id="email", class="mdl-textfield__input")
-                label(for="email", class="mdl-textfield__label") Email
+                label(for="email", class="mdl-textfield__label") Your Email
             div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
                 input(type="text", name="feed", id="feed", class="mdl-textfield__input")
-                label(for="feed", class="mdl-textfield__label") Feed
-            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
-                input(type="text", name="hour_of_day", id="hour_of_day", class="mdl-textfield__input", pattern="-?[0-9]*(\.[0-9]+)?", value=9)
-                label(for="hour_of_day", class="mdl-textfield__label") Hour of Day in GMT (0-23)
+                label(for="feed", class="mdl-textfield__label") Feed (.rss or .atom link)
+            br
             .mdl-grid.mdl-grid--no-spacing.section--center
               .mdl-card.grid--center
                 label(for="monday" class="mdl-checkbox mdl-js-checkbox")
@@ -88,10 +86,12 @@ block content
                 label(for="sunday" class="mdl-checkbox mdl-js-checkbox")
                   input(type="checkbox" id="sunday" name="sunday" class="mdl-checkbox__input")
                   span(class="mdl-checkbox__label") Sunday
+            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.textfield-demo.grid--center
+                input(type="text", name="hour_of_day", id="hour_of_day", class="mdl-textfield__input", pattern="-?[0-9]*(\.[0-9]+)?", value=9)
+                label(for="hour_of_day", class="mdl-textfield__label") Hour of Day in GMT (0-23)
             div(style="text-align:center;")
                 button(type="submit", value="add", class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Submit
           br
-
       br
 
       .mdl-grid.mdl-grid--no-spacing.section--center
@@ -128,7 +128,9 @@ block content
           br
 
       footer.coffee-footer.mdl-mega-footer
-      //-   .mdl-mega-footer--top-section
+        .mdl-mega-footer--top-section
+          h6.grid--center
+            | I hate spam as much as you do (probably more) and will not share your email id with anyone. It will only be used to send the feed updates. Moreover, you can unsubsribe anytime using the link present in mails.
       //-     .mdl-mega-footer--left-section
       //-       button.mdl-mega-footer--social-btn
       //-       button.mdl-mega-footer--social-btn
