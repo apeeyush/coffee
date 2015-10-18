@@ -1,6 +1,6 @@
 # coffee - COmplete your Favourite FEEd
 
-This project aims to help you complete your favourite feed. Be it [Paul Graham's essays](http://www.paulgraham.com/articles.html), [High Scalability all time favorites](http://highscalability.com/all-time-favorites/), [Algorithm tutorials by Topcoder](https://www.topcoder.com/community/data-science/data-science-tutorials/) or [Nerd Fitness guides](http://www.nerdfitness.com/resources/).
+This project aims to help you complete your favourite feed. Be it [Paul Graham's essays](http://www.paulgraham.com/articles.html), [High Scalability all time favorites](http://highscalability.com/all-time-favorites/), [Algorithm tutorials by Topcoder](https://www.topcoder.com/community/data-science/data-science-tutorials/) or [Nerd Fitness guides](http://www.nerdfitness.com/resources/). You can find a compilation of some useful feeds [here](https://github.com/apeeyush/loff).
 
 You can set it up to receive old content from the feed after fixed intervals and it's only a matter of weeks or months to finish up the feed you always wanted to read.
 
